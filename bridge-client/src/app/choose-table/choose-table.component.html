@@ -1,0 +1,22 @@
+<h2 style="color:rgb(244, 245, 246);">Choose an existing seat from the following table list</h2>
+<p><label for="name" style="color:rgb(244, 245, 246);">Player Name: </label><input type="text" name="name" [(ngModel)]="username"></p>
+<div *ngFor="let table of availableTables; let i = index;" class="table-grid">
+    <div class="position">North:</div>
+    <div *ngIf="getPlayerName(i, 0) != '';then playername0 else button0" then playername0 else button0></div>
+    <ng-template #button0><button class="name buttonblue" (click)="joinTable(i, 0)">Take a seat</button></ng-template>
+    <ng-template #playername0><div class="name">{{getPlayerName(i, 0)}}</div></ng-template>
+    <div class="position">East:</div>
+    <div *ngIf="getPlayerName(i, 1) != '';then playername1 else button1" then playername1 else button1></div>
+    <ng-template #button1><button class="name buttonblue" (click)="joinTable(i, 1)">Take a seat</button></ng-template>
+    <ng-template #playername1><div class="name">{{getPlayerName(i, 1)}}</div></ng-template>
+    <div class="position">South:</div>
+    <div *ngIf="getPlayerName(i, 2) != '';then playername2 else button2" then playername2 else button2></div>
+    <ng-template #button2><button class="name buttonblue" (click)="joinTable(i, 2)">Take a seat</button></ng-template>
+    <ng-template #playername2><div class="name">{{getPlayerName(i, 2)}}</div></ng-template>
+    <div class="position">West:</div>
+    <div *ngIf="getPlayerName(i, 3) != '';then playername3 else button3" then playername3 else button3></div>
+    <ng-template #button3><button class="name buttonblue" (click)="joinTable(i, 3)">Take a seat</button></ng-template>
+    <ng-template #playername3><div class="name">{{getPlayerName(i, 3)}}</div></ng-template>
+</div>
+<h2 style="color:rgb(244, 245, 246);">Or create a new table</h2>
+<p><button (click)="createNewTable()">Create a New Table</button></p>

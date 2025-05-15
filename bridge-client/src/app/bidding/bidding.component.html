@@ -1,0 +1,10 @@
+<div class="bidding-history">
+    <div>North</div><div>East</div><div>South</div><div>West</div>
+    <div *ngFor="let bid of bidhistory; index as i"><div>{{bid}}</div></div>
+</div>
+<div class="bidding-buttons">
+    <div *ngFor="let bid of getBidLevels(); index as i"><button [disabled]="bidlevel>i" (click)="setBidLevel(i)">{{bid}}</button></div>
+    <div><button [disabled]="isDoubled" (click)="double()">Double</button></div>
+    <div><button [disabled]="!isDoubled || isReDoubled" (click)="redouble()">Re-Double</button></div>
+    <div><button (click)="pass()">Pass</button></div>
+</div>

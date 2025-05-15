@@ -1,0 +1,17 @@
+.bidding-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 100px);
+    grid-template-rows: repeat(7, 50px);
+    justify-content: center;
+}
+
+.bidding-history {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: 50px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    justify-content: center;
+    background-color: DodgerBlue;
+    color: rgb(254, 254, 254);
+}

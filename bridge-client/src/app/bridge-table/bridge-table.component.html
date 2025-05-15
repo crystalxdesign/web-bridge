@@ -1,0 +1,32 @@
+<mqtt-listener [userId]="myId" [tableId]="myTableId" (mqttPlayerMsg)="mqttPlayerMsg($event)" (mqttTableMsg)="mqttTableMsg($event)"></mqtt-listener>
+<div id="dimScreen">
+    <H1 style="color:white; background-color:rgb(255, 30, 30); text-align: center;">{{message}}</H1>
+    <ng-template [ngIf]="gameStage==1">
+        <choose-table (notifyParent)="processChildEvent($event)" (getFreeTables)="getActiveTables()" (notifyJoinTable)="joinTable($event)" [availableTables]="activeTables"></choose-table>
+    </ng-template>
+    <ng-template [ngIf]="gameStage==2">
+        <bidding [bidAllowed]="bidAllowed" [bidhistory]="bidhistory" (notifyBid)="processBidEvent($event)" (notifyParent)="processChildEvent($event)" ></bidding>
+    </ng-template>
+    <ng-template [ngIf]="gameStage==3">
+        <div class="hand-dummy">
+            <playing-card *ngFor="let card of dummyHand" [playAllowed]="playAllowed" [cardType]="card" [view]="''" (notifyPlay)="processPlayEvent($event)"></playing-card>
+        </div>
+        <div class="play-area">
+            <div></div>
+            <div><playing-card [cardType]="getCard(0)" [view]="''" [playAllowed]="false"></playing-card></div>
+            <div></div>
+            <div><playing-card [cardType]="getCard(3)" [view]="'sideview'" [playAllowed]="false"></playing-card></div>
+            <div></div>
+            <div><playing-card [cardType]="getCard(1)" [view]="'sideview'" [playAllowed]="false"></playing-card></div>
+            <div></div>
+            <div><playing-card [cardType]="getCard(2)" [view]="''" [playAllowed]="false"></playing-card></div>
+            <div></div>
+        </div>
+    </ng-template>
+    <ng-template [ngIf]="gameStage>1">
+        <div class="hand-declarer">
+            <playing-card *ngFor="let card of myHand" [cardType]="card" [view]="''" [playAllowed]="playAllowed" (notifyPlay)="processPlayEvent($event)"></playing-card>
+        </div>
+        <div class="base"><H1 style="color:white; background-color:DodgerBlue; text-align: center;">{{seat[mySeat]}}: {{myName}}</H1></div>
+    </ng-template>
+</div>

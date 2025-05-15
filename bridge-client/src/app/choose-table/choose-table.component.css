@@ -1,0 +1,35 @@
+.table-image {
+    display: grid;
+    grid-template-columns: repeat(3, 90px);
+    grid-template-rows: repeat(3, 90px);
+    justify-content: center;
+}
+.table-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 90px);
+    grid-template-rows: 30px;
+    justify-content: center;
+    color:aliceblue;
+    background-color:rgb(81, 46, 157);
+    border: solid 1px black;
+}
+.buttonblue {
+    background-color: #ba009e;
+    border: 2px solid #aa0404;
+    color:aliceblue;
+    height: 20px;
+}
+
+div.table-grid>div:nth-of-type(even) {
+    background: #7f1a1a;
+}
+
+.position {
+    justify-self: end;
+    align-self: center;
+}
+
+.name {
+    justify-self: center;
+    align-self: center;
+}
